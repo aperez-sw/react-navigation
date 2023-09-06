@@ -13,7 +13,7 @@ import {
   useTheme,
 } from '@react-navigation/native';
 import * as React from 'react';
-import { BackHandler, Platform, StyleSheet } from 'react-native';
+import { BackHandler, Platform, StyleSheet, useWindowDimensions } from 'react-native';
 import { Drawer } from 'react-native-drawer-layout';
 import { useSafeAreaFrame } from 'react-native-safe-area-context';
 import useLatestCallback from 'use-latest-callback';
@@ -78,8 +78,9 @@ function DrawerViewBase({
     setLoaded([...loaded, focusedRouteKey]);
   }
 
-  const dimensions = useSafeAreaFrame();
-
+  // const dimensions = useSafeAreaFrame();
+  const dimensions = useWindowDimensions();
+  
   const { colors } = useTheme();
 
   const drawerStatus = getDrawerStatusFromState(state);
